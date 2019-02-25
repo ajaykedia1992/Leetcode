@@ -7,6 +7,11 @@ class Tree {
 		this.data = data;
 	}
 
+	@Override
+	public String toString() {
+		return "Tree [data=" + data + "]";
+	}
+	
 }
 
 public class InorderSuccessor {
