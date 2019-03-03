@@ -1,8 +1,8 @@
-public class StringPermutation {
+public class PermutationWithNoRepetition {
 
 	public static void main(String args[]) {
 		String str = "ABC";
-		StringPermutation sp = new StringPermutation();
+		PermutationWithNoRepetition sp = new PermutationWithNoRepetition();
 		sp.calculatePermutation(str, 0, str.length() - 1);
 	}
 
@@ -12,13 +12,9 @@ public class StringPermutation {
 				System.out.println(str);
 			} else {
 				for (int i = l; i <= r; i++) {
-					if (l != i) {
-						str = swap(str, l, i);
-					}
+					str = swap(str, l, i);
 					calculatePermutation(str, l + 1, r);
-					if (l != i) {
-						str = swap(str, l, i);
-					}
+					str = swap(str, l, i);
 				}
 			}
 		}

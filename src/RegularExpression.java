@@ -3,7 +3,7 @@ public class RegularExpression {
 
 	public static void main(String args[]) {
 		String s = "abc";
-		String p = ".*c";
+		String p = "a*b*c";
 
 		System.out.println(isMatch(s, p));
 	}
@@ -18,38 +18,40 @@ public class RegularExpression {
 			return true;
 		}
 
-		if ((s.length() != 0 && p.length() == 0) || (s.length() == 0 && p.length() != 0)) {
+		if (p.length() != 0 && p.charAt(0) == '*') {
 			return false;
 		}
 
 		// Now we have both the strings which are non-empty
 
-		boolean[][] status = new boolean[p.length() + 1][s.length() + 1];
+		boolean[][] status = new boolean[s.length() + 1][p.length() + 1];
 
 		status[0][0] = true;
 
 		char[] string = s.toCharArray();
 		char[] pattern = p.toCharArray();
 
-		for (int i = 1; i <= pattern.length; i++) { // pattern
-			for (int j = 1; j <= string.length; j++) { // string
-				if (pattern[i - 1] == string[j - 1]) {
-					status[i][j] = true;
-				} else {
-					if (pattern[i - 1] == '.') {
-						if (status[i - 1][j - 1]) {
-							status[i][j] = true;
-						}
-					} else if (pattern[i - 1] == '*') {
-						if (status[i - 1][j] || status[i][j - 1]) {
-							status[i][j] = true;
-						}
-					} else {
-						status[i][j] = false;
+		for (int i = 1; i < status[0].length; i++) {
+			if (pattern[i - 1] == '*') {
+				status[0][i] = status[0][i - 2];
+			}
+		}
+
+		for (int i = 1; i <= string.length; i++) { // pattern
+			for (int j = 1; j <= pattern.length; j++) { // string
+				if (string[i - 1] == pattern[j - 1] || pattern[j - 1] == '.') {
+					status[i][j] = status[i - 1][j - 1];
+				} else if (pattern[j - 1] == '*') {
+					status[i][j] = status[i][j - 2];
+					if (pattern[j - 2] == '.' || pattern[j - 2] == string[i - 1]) {
+						status[i][j] = status[i][j] | status[i - 1][j];
 					}
+				} else {
+					status[i][j] = false;
 				}
 			}
 		}
-		return status[pattern.length][string.length];
+		return status[string.length][pattern.length];
 	}
+
 }

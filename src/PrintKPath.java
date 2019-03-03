@@ -17,6 +17,7 @@ public class PrintKPath {
 		root.right.right.right = new Tree(2);
 
 		List<Integer> list = new ArrayList<Integer>();
+		//sum = 5
 		printKPath(root, list, 5);
 	}
 

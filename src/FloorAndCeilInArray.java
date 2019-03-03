@@ -1,3 +1,8 @@
+/*
+ * This program is not working. There is another solution in this repo.
+ * 
+ */
+
 enum Error {
 	FLOORERROR, CEILERROR, UNAVAILABLE, SUCCESSFUL;
 }

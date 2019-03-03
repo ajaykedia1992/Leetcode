@@ -3,7 +3,7 @@ import java.util.Stack;
 public class WaterContainer {
 
 	public static void main(String args[]) {
-		int arr[] = { 1, 2, 3, 4, 5, 4, 3, 2, 1 };
+		int arr[] = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
 		System.out.println(findMaxAreaOfWaterContainer(arr));
 	}
 
@@ -25,20 +25,16 @@ public class WaterContainer {
 				}
 
 				else {
-					while (true) {
-						top = stack.pop();
-						if (!stack.isEmpty() && arr[top] == arr[stack.peek()]) {
-							stack.pop();
-						} else {
-							break;
-						}
+					top = stack.pop();
+					while (!stack.isEmpty() && arr[top] == arr[stack.peek()]) {
+						stack.pop();
 					}
 					if (stack.isEmpty()) {
 						stack.push(i);
 						continue;
 					}
 					int stackTop = stack.peek();
-					maxArea += (Math.min(arr[i], arr[stackTop]) - arr[top]) * (i - stackTop - 1);
+					maxArea += ((Math.min(arr[i], arr[stackTop]) - arr[top]) * (i - stackTop - 1));
 					i -= 1;
 				}
 			}
