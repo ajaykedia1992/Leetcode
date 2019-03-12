@@ -4,6 +4,8 @@ public class PermutationWithNoRepetition {
 		String str = "ABC";
 		PermutationWithNoRepetition sp = new PermutationWithNoRepetition();
 		sp.calculatePermutation(str, 0, str.length() - 1);
+		
+		int arr[] = {1,2,3};
 	}
 
 	private void calculatePermutation(String str, int l, int r) {

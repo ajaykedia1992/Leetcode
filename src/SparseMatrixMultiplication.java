@@ -5,8 +5,11 @@ import java.util.List;
 public class SparseMatrixMultiplication {
 
 	public static void main(String args[]) {
-		int[][] A = { { 1, 0, 1 }, { -1, 0, 3 } };
-		int[][] B = { { 7, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 1, -1 } };
+		/*int[][] A = { { 1, 0, 0	}, { -1, 0, 3 } };
+		int[][] B = { { 7, 0, 0 }, {0, 0, 0 }, { 0, 0, 1} };*/
+		
+		int[][] A = {{1,-5}};
+		int[][] B = {{12}, {-1}};
 
 		int[][] result = multiply(A, B);
 		if (result == null) {

@@ -12,14 +12,14 @@ public class ValidateBinarySearchTree {
 
 		System.out.println(isBinarySearchTree(root, Integer.MIN_VALUE, Integer.MAX_VALUE)); // true
 
-		inOrder(root);
+		preOrder(root);
 	}
 
-	private static void inOrder(Tree root) {
+	private static void preOrder(Tree root) {
 		if (root != null) {
-			inOrder(root.left);
 			System.out.print(root.data + " ");
-			inOrder(root.right);
+			preOrder(root.left);
+			preOrder(root.right);
 		}
 
 	}

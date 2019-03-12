@@ -7,7 +7,7 @@
 public class MinimumWindowSubstring {
 
 	public static void main(String args[]) {
-		String str = "ABAC";
+		String str = "ABC";
 		String t = "AC";
 
 		System.out.println(findMinimumWindowSubString(str, t));
