@@ -4,7 +4,8 @@ import java.util.List;
 public class TextJustification1 {
 
 	public static void main(String args[]) {
-		String[] str = { "This", "is", "an", "example", "of", "text", "justification." };
+		String[] str = { "This", "is", "an", "example", "of", "text", "justification.", "Please!", "say", "Hello",
+		"World" };
 		List<String>res = new TextJustification1().fullJustify(str, 16);
 		for(String r : res) {
 			System.out.println(r);
